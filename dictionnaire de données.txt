@@ -1,0 +1,55 @@
+<dictionnaire>
+médecin : entité
+enfant : entité
+centre médicaux : entié
+dépendre (médecin, centre médicaux) : association
+spécialités : entité
+avoir (médecin, spécialité) : association
+école : entité
+affecter pour une année(médecin, école) : association (année)
+vaccin : entité
+vaccinner (medecin,enfant,vaccin, date) : association (code vaccin, date)
+</dictionnaire>
+
+<MCD>
+    <entités>
+        medecin
+        enfant
+        centre
+        specialite
+        ecole
+        vaccin
+    </entités>
+
+    <association>
+        dépendre
+        - medecin 1,1
+        - centre 0,N
+
+        avoir
+        - medecin 0,N
+        - specialite 0,N
+
+        affecter (annee)
+        - medecin 0,N
+        - ecole 1,N
+
+        vacciner (date)
+        - medecin 1,N
+        - enfant 1,N
+        - vaccin 1,N
+    </association>
+</MCD>
+    
+<MLD>
+    medecin : id (pk), libelle, idcentre (fk)
+    enfant : id (pk), libelle
+    centre : id (pk), libelle
+    specialite : id (pk), libelle
+    ecole : id (pk), libelle
+    vaccin : id (pk), libelle
+    avoirspe : id (pk), idmedecin (fk), idspecialite (fk)
+    affectation : id(pk), idmedecin(fk), idecole(fk), annee
+    vaccination : id(pk), idmedecin(fk),idenfant(fk),idvaccin(fk), date
+</MLD>
+
